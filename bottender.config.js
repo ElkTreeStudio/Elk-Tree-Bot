@@ -52,8 +52,8 @@ module.exports = {
     slack: {
       enabled: true,
       path: '/webhooks/slack',
-      accessToken: 'xoxb-389597258145-2257665887410-NbLErtGMhwONRMfmMb5Rspqg',
-      signingSecret: '7929510bc7b158f0b2ae629c6fab8691',
+      accessToken: process.env.SLACK_ACCESS_TOKEN,
+      signingSecret: process.env.SLACK_SIGNING_SECRET,
     },
     viber: {
       enabled: false,
