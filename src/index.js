@@ -13,6 +13,7 @@ function log(context) {
 
 async function sayHello(context) {
   await context.sendText('Hello');
+  await context.sendText('哇細呆丸郎');
 }
 
 async function echo(context) {
