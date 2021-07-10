@@ -2,6 +2,10 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const { bottender } = require('bottender');
 
+const sendMessageFromBot = require('./slackbot.js');
+
+const sendMail = require('./gmail.js');
+
 const app = bottender({
   dev: process.env.NODE_ENV !== 'production',
 });
@@ -26,8 +30,34 @@ app.prepare().then(() => {
   });
 
   // your custom route
-  server.get('/mail', (req, res) => {
-    return handle(req, res);
+  server.post('/api/mail', (req, res) => {
+    const { mailTo } = req.body;
+    sendMail(mailTo);
+    res.status(200).json({
+      status: 200,
+      message: 'successful',
+      data: true
+    });
+  });
+
+  // your custom route
+  server.post('/api/notify', async (req, res) => {
+    const { channel, message } = req.body;
+    const channelId = channel ? channel : 'testing_space';
+    const data = await sendMessageFromBot(channelId, message);
+    if (data === 'ok') {
+      res.status(200).json({
+        status: 200,
+        message: 'successful',
+        data: true
+      });
+    } else {
+      res.status(400).json({
+        status: 400,
+        message: 'error',
+        data: null
+      });
+    }
   });
 
   server.get('/test', (req, res) => {

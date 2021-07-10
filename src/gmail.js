@@ -2,6 +2,7 @@ const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
 const main = require('./mail');
+require('dotenv').config();
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://mail.google.com/'];
@@ -11,8 +12,8 @@ const SCOPES = ['https://mail.google.com/'];
 const TOKEN_PATH = 'token.json';
 
 const credentials = {
-  client_id: '578082596227-5rr7jne208i2kq5meib67thsakr8me9p.apps.googleusercontent.com',
-  client_secret: 'PBMF3J_ctLI2FwuTJ6LMKktV',
+  client_id: process.env.MAIL_ID,
+  client_secret: process.env.MAIL_SECRET,
   redirect_uri: 'https://developers.google.com/oauthplayground'
 };
 
@@ -23,7 +24,14 @@ const credentials = {
   authorize(JSON.parse(content), listLabels);
 }); */
 
-authorize(listLabels);
+let mailTo = [];
+
+let mailContent = '';
+
+function sendMail(mailToPeople) {
+  mailTo = mailToPeople;
+  authorize(listLabels);
+}
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -92,9 +100,11 @@ function listLabels(auth) {
       labels.forEach((label) => {
         console.log(`- ${label.name}`);
       });
-      main(auth.credentials.access_token, auth.credentials.refresh_token, ['cd12631@gmail.com']).catch(console.error);
+      main(auth.credentials.access_token, auth.credentials.refresh_token, mailTo).catch(console.error);
     } else {
       console.log('No labels found.');
     }
   });
 }
+
+module.exports = sendMail;
