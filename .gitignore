@@ -1,5 +1,6 @@
 # Taken from https://github.com/github/gitignore/blob/master/Node.gitignore
 token.json
+.DS_Store
 # Logs
 logs
 *.log
