@@ -6,11 +6,16 @@
     "dev": "bottender dev",
     "dev:console": "npm run dev -- --console",
     "lint": "eslint . ",
-    "start": "bottender start",
+    "start:bottender": "bottender start",
+    "start": "node ./src/server.js",
+    "mail": "node ./src/mail.js",
     "test": "jest"
   },
   "dependencies": {
-    "bottender": "1.5.1-alpha.9"
+    "bottender": "1.5.1-alpha.9",
+    "express": "^4.17.1",
+    "googleapis": "^81.0.0",
+    "nodemailer": "^6.6.2"
   },
   "devDependencies": {
     "eslint": "^7.30.0",

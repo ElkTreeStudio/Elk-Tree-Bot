@@ -21,6 +21,7 @@ async function echo(context) {
 }
 
 module.exports = async function App(context) {
+  // console.log(context);
   return router([
     // return the `SayHi` action when receiving "hi" text messages
     text('hi', sayHi),
