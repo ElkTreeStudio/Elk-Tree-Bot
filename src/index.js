@@ -8,8 +8,8 @@ async function sayHi(context) {
 async function log(context) {
   // console.log(context.platform);
   // console.log(context.client);
-  // console.log(context.event);
-  await context.sendText('other');
+  console.log(context.event);
+  // await context.sendText('other');
 }
 
 async function sayHello(context) {

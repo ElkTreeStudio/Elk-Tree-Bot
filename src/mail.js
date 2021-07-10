@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+require('dotenv').config();
 
 // async..await is not allowed in global scope, must use a wrapper
 async function main(accessToken, refreshToken, toMail){
@@ -14,9 +15,9 @@ async function main(accessToken, refreshToken, toMail){
     secure: true, // true for 465, false for other ports
     auth: {
       type: "OAuth2",
-      user: "notice@elk-tree.studio",
-      clientId: "578082596227-5rr7jne208i2kq5meib67thsakr8me9p.apps.googleusercontent.com",
-      clientSecret: "PBMF3J_ctLI2FwuTJ6LMKktV",
+      user: process.env.MAIL,
+      clientId: process.env.MAIL_ID,
+      clientSecret: process.env.MAIL_SECRET,
       refreshToken: refreshToken,
       accessToken: accessToken
     }
