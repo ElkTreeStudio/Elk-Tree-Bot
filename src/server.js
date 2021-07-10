@@ -25,15 +25,17 @@ app.prepare().then(() => {
     res.json({ ok: true });
   });
 
-  server.get('/test', (req, res) => {
+  // your custom route
+  server.get('/mail', (req, res) => {
+    return handle(req, res);
+  });
 
+  server.get('/test', (req, res) => {
     res.json({ ok: true });
   });
 
   // route for webhook request
   server.all('*', (req, res) => {
-    console.log(req);
-    console.log(req.body);
     return handle(req, res);
   });
 

@@ -6,9 +6,10 @@ async function sayHi(context) {
 }
 
 function log(context) {
-  console.log(context.platform);
-  console.log(context.client);
-  console.log(context.event);
+  // console.log(context.platform);
+  // console.log(context.client);
+  // console.log(context.event);
+  await context.sendText('other');
 }
 
 async function sayHello(context) {
@@ -21,7 +22,7 @@ async function echo(context) {
 }
 
 module.exports = async function App(context) {
-  // console.log(context);
+  console.log(context);
   return router([
     // return the `SayHi` action when receiving "hi" text messages
     text('hi', sayHi),
