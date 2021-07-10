@@ -5,7 +5,7 @@ async function sayHi(context) {
   await echo(context);
 }
 
-function log(context) {
+async function log(context) {
   // console.log(context.platform);
   // console.log(context.client);
   // console.log(context.event);
