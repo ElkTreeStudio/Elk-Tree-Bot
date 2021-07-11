@@ -17,6 +17,14 @@ const credentials = {
   redirect_uri: 'https://developers.google.com/oauthplayground'
 };
 
+const token = {
+  access_token: process.env.GMAIL_TOKEN,
+  refresh_token: process.env.GMAIL_REFRESH_TOKEN,
+  scope: process.env.GMAIL_SCOPE,
+  token_type: process.env.GMAIL_TOKEN_TYPE,
+  expiry_date: process.env.GMAIL_EXPIRY_DATE,
+};
+
 // Load client secrets from a local file.
 /* fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
@@ -43,12 +51,16 @@ function authorize(callback) {
   const { client_secret, client_id, redirect_uri } = credentials;
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uri);
   // Check if we have previously stored a token.
+  oAuth2Client.setCredentials(token);
+  callback(oAuth2Client);
+  /* 
   fs.readFile(TOKEN_PATH, (err, token) => {
     console.log(JSON.parse(token));
     if (err) return getNewToken(oAuth2Client, callback);
     oAuth2Client.setCredentials(JSON.parse(token));
     callback(oAuth2Client);
   });
+  */
 }
 
 /**
