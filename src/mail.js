@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 require('dotenv').config();
 
 // async..await is not allowed in global scope, must use a wrapper
-async function main(accessToken, refreshToken, toMail){
+async function main(accessToken, refreshToken, toMail, mailTitle, mailContent){
 
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
@@ -25,23 +25,11 @@ async function main(accessToken, refreshToken, toMail){
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"👹 Elk Tree Studio Notification "<service@elk-tree.studio>', // sender address
+    from: '"🐬 🐬 🐬 Elk Tree Studio Notification "<service@elk-tree.studio>', // sender address
     to: toMail, // list of receivers
-    subject: "Updated Notification", // Subject line
-    text: "Updated Notification", // plain text body
-    html: `
-      <h1>
-        Your Dashboard was updated!
-      </h1>
-      <p>
-        Please see new version in <a href="https://fable-smartboss.elk-tree.site/">https://fable-smartboss.elk-tree.site/</a>.
-      </p>
-      <p>
-        Best regards,<br />
-        Elk Tree Studio Team.
-      </p>
-
-    ` // html body
+    subject: mailTitle, // Subject line
+    text: mailTitle, // plain text body
+    html: mailContent // html body
   });
 
   console.log("Message sent: %s", info.messageId);

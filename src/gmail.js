@@ -33,11 +33,12 @@ const token = {
 }); */
 
 let mailTo = [];
-
+let mailTitle = '';
 let mailContent = '';
 
-function sendMail(mailToPeople) {
+function sendMail(mailToPeople, mailTitleReq, mailContentReq) {
   mailTo = mailToPeople;
+
   authorize(listLabels);
 }
 
@@ -112,7 +113,7 @@ function listLabels(auth) {
       labels.forEach((label) => {
         console.log(`- ${label.name}`);
       });
-      main(auth.credentials.access_token, auth.credentials.refresh_token, mailTo).catch(console.error);
+      main(auth.credentials.access_token, auth.credentials.refresh_token, mailTo, mailTitle, mailContent).catch(console.error);
     } else {
       console.log('No labels found.');
     }
