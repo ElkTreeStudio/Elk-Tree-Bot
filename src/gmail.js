@@ -38,7 +38,8 @@ let mailContent = '';
 
 function sendMail(mailToPeople, mailTitleReq, mailContentReq) {
   mailTo = mailToPeople;
-
+  mailTitle = mailTitleReq;
+  mailContent = mailContentReq;
   authorize(listLabels);
 }
 

@@ -31,8 +31,8 @@ app.prepare().then(() => {
 
   // your custom route
   server.post('/api/mail', (req, res) => {
-    const { mailTo } = req.body;
-    sendMail(mailTo);
+    const { mailTo, mailTitle, mailContent } = req.body;
+    sendMail(mailTo, mailTitle, mailContent);
     res.status(200).json({
       status: 200,
       message: 'successful',
