@@ -1,7 +1,7 @@
 const { WebClient } = require('@slack/web-api');
 require('dotenv').config();
 
-async function sendMessageFromBot(channel='testing_space', message) {
+async function sendMessageFromBot(channel='bot_notification', message) {
   // Read a token from the environment variables
   const token = process.env.SLACK_ACCESS_TOKEN;
 

@@ -43,7 +43,7 @@ app.prepare().then(() => {
   // your custom route
   server.post('/api/notify', async (req, res) => {
     const { channel, message } = req.body;
-    const channelId = channel ? channel : 'testing_space';
+    const channelId = channel ? channel : 'bot_notification';
     const data = await sendMessageFromBot(channelId, message);
     if (data === 'ok') {
       res.status(200).json({
