@@ -15,7 +15,7 @@ async function main(accessToken, refreshToken, toMail, mailTitle, mailContent){
     secure: false, // true for 465, false for other ports
     auth: {
       user: 'notice@elk-tree.studio', // generated ethereal user
-      pass: 'hpshhpsh108', // generated ethereal password
+      pass: 'pass', // generated ethereal password
     },
   });
 
