@@ -10,17 +10,13 @@ async function main(accessToken, refreshToken, toMail, mailTitle, mailContent){
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    host: "smtp-relay.gmail.com",
     port: 465,
-    secure: true, // true for 465, false for other ports
+    secure: false, // true for 465, false for other ports
     auth: {
-      type: "OAuth2",
-      user: process.env.MAIL,
-      clientId: process.env.MAIL_ID,
-      clientSecret: process.env.MAIL_SECRET,
-      refreshToken: refreshToken,
-      accessToken: accessToken
-    }
+      user: 'notice@elk-tree.studio', // generated ethereal user
+      pass: 'hpshhpsh108', // generated ethereal password
+    },
   });
 
   // send mail with defined transport object
