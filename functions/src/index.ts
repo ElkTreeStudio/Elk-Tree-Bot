@@ -1,5 +1,5 @@
 import * as functions from "firebase-functions";
-export {slackNotify} from "./slack";
+export { slackNotify } from "./slack";
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
