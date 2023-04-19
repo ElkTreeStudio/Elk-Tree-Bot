@@ -1,7 +1,6 @@
-const { WebClient } = require('@slack/web-api');
-require('dotenv').config();
+import { WebClient } from '@slack/web-api';
 
-async function sendMessageFromBot(channel='bot_notification', message) {
+export async function sendMessageFromBot(channel='bot_notification', message: string) {
   // Read a token from the environment variables
   const token = process.env.SLACK_ACCESS_TOKEN;
 
@@ -18,11 +17,9 @@ async function sendMessageFromBot(channel='bot_notification', message) {
     });
 
     // The result contains an identifier for the message, `ts`.
-    console.log(`Successfully send message ${result.ts} in conversation ${conversationId}`);
+    console.log(`Successfully send message ${ result.ts } in conversation ${ conversationId }`);
     return 'ok';
   } 
   const res = await postMessage();
   return res;
 }
-
-module.exports = sendMessageFromBot;
