@@ -1,4 +1,3 @@
-
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
@@ -8,3 +7,4 @@
 // });
 export { slackNotify } from "./slack";
 export { healthCheck } from './healthCheck';
+export { slackToContact } from './contact';
